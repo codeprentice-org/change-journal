@@ -28,7 +28,7 @@ Then once that's done, we want to use this change journal library to create an
 Perhaps we can integrate it into [lolcate](https://github.com/ngirard/lolcate-rs),
 a Rust file searcher that has a lot of nice features 
 except for the real-time filesystem monitoring that Change Journal could provide.
-__
+
 
 #### Rust
 To get started learning Rust, I really recommend the [Rust Book](https://doc.rust-lang.org/book/).
@@ -81,9 +81,9 @@ This is the Windows API that Everything (which is closed source) uses
 for real-time file monitoring to keep an always up-to-date filesystem database.
 
 We won't start working on the USN Journal backend until we finish the `fanotify` backend,
-but for future reference, 
+but for future reference, here is
 
-* [here](https://docs.microsoft.com/en-us/windows/win32/fileio/change-journals) is the win32 documentation.
+* the [win32 documentation](https://docs.microsoft.com/en-us/windows/win32/fileio/change-journals)
 
 and here are some Rust projects that use it, although none that I can find provide an idiomatic wrapper to it:
 * [RustyUsn](https://github.com/forensicmatt/RustyUsn)
