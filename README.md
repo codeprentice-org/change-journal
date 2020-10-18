@@ -32,8 +32,13 @@ this library can enable is already fulfilled very well by Spotlight.
 
 
 ## Roadmap
+- [ ] Contribute to or fork 
+      the [file-descriptors](https://docs.rs/file-descriptors/0.9.1/file_descriptors/fanotify/struct.FanotifyFileDescriptor.html) crate 
+      to include support for the newer `fanotify` APIs/flags.
+      No real new code should be needed, just adding the new flags.
+
 - [ ] Implement the `fanotify` backend using 
-the [file-descriptors](https://docs.rs/file-descriptors/0.9.1/file_descriptors/fanotify/struct.FanotifyFileDescriptor.html) crate.
+      the [file-descriptors](https://docs.rs/file-descriptors/0.9.1/file_descriptors/fanotify/struct.FanotifyFileDescriptor.html) crate.
 
 - [ ] Implement the USN Journal backend.
 

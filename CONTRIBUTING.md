@@ -32,7 +32,8 @@ except for the real-time filesystem monitoring that Change Journal could provide
 
 #### Rust
 To get started learning Rust, I really recommend the [Rust Book](https://doc.rust-lang.org/book/).
-It's a really great introduction to Rust.  I'm not sure of 
+It's a really great introduction to Rust.  I'm not sure of other good learning materials, 
+but you can always ask me any questions.
 
 
 #### Fanotify on Linux
@@ -44,7 +45,7 @@ Thus, `inotify` doesn't work if you want to monitor large parts of or the whole 
 Thus, more recently, Linux added 
 the [`fanotify`](https://www.man7.org/linux/man-pages/man7/fanotify.7.html) API.
 `fanotify` allows you to monitor the entire filesystem for file events.
-This includes file creation/deletion/move events, which we're interested, 
+This includes file creation/deletion/move events, which we're interested in, 
 but also file access, open, close, modify, and attribute events.
 Furthermore, the API allows you to read notifications of these events
 as well as intercept them and influence the outcome of the event.
@@ -61,7 +62,7 @@ Especially focus on the latter.
 In the Rust world, there is already a crate, 
 [file-descriptors](https://docs.rs/file-descriptors/0.9.1/file_descriptors/fanotify/struct.FanotifyFileDescriptor.html), 
 that has an idiomatic Rust API around `fanotify`,
-so I think we'll use that if it supports everything we need.
+so I think we'll use that if it supports everything we need (it doesn't completely).
 I also suggest reading how its API works and maps to the underlying `fanotify` Linux API.
 
 Keep in mind that the entire `fanotify` API is not that new, but the parts required 
