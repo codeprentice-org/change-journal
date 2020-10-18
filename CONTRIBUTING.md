@@ -28,7 +28,7 @@ Then once that's done, we want to use this change journal library to create an
 Perhaps we can integrate it into [lolcate](https://github.com/ngirard/lolcate-rs),
 a Rust file searcher that has a lot of nice features 
 except for the real-time filesystem monitoring that Change Journal could provide.
-
+__
 
 #### Rust
 To get started learning Rust, I really recommend the [Rust Book](https://doc.rust-lang.org/book/).
