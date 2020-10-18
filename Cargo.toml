@@ -1,0 +1,20 @@
+[package]
+name = "change-journal"
+version = "0.1.0"
+authors = [
+    "Khyber Sen <kkysen@gmail.com>",
+]
+edition = "2018"
+description = ""
+license = "MIT"
+repository = "https://github.com/codeprentice-org/change-journal"
+homepage = "https://github.com/codeprentice-org/change-journal/blob/main/README.md"
+readme = "README.md"
+categories = ["filesystem", "os::linux-apis", "os::windows-apis"]
+keywords = ["change journal", "fanotify", "USN", "watch", "filesystem"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+file-descriptors = "0.9.1"
+

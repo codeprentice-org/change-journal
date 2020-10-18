@@ -1,1 +1,1 @@
-# change-journal
+# Change Journal
