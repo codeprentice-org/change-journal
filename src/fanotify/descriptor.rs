@@ -1,7 +1,9 @@
 use crate::fanotify::flags::init::{
     FanotifyEventFlags, FanotifyFlags, FanotifyNotificationClass, FanotifyReadWrite,
 };
-use libc::fanotify_init;
+use crate::fanotify::flags::mark::Mark;
+use crate::fanotify::util::{libc_call, libc_void_call};
+use libc::{fanotify_init, fanotify_mark};
 use nix::errno::Errno;
 use std::os::raw::c_uint;
 use std::os::unix::io::{AsRawFd, FromRawFd, IntoRawFd, RawFd};
@@ -70,28 +72,43 @@ impl FanotifyInit {
     }
 
     pub fn run(&self) -> Result<FanotifyDescriptor, FanotifyError> {
-        Errno::clear();
+        use Errno::*;
+        use FanotifyError::*;
         let flags = self.flags();
         let event_flags = self.event_flags();
-        let fd = unsafe { fanotify_init(self.flags(), self.event_flags()) };
-        match fd {
-            -1 => {
-                use FanotifyError::*;
-                use Errno::*;
-                let errno = Errno::last();
-                Errno::clear();
-                Err(match errno {
-                    EMFILE => ExceededFanotifyGroupPerProcessLimit,
-                    ENFILE => ExceededOpenFileDescriptorPerProcessLimit,
-                    ENOMEM => OutOfMemory,
-                    EPERM => PermissionDenied,
-                    ENOSYS => Unsupported,
-                    // EINVAL => unreachable!(), // handled below
-                    _ => panic!(format!("unexpected error in fanotify_init({}, {}): {}", flags, event_flags, errno.desc())),
-                })
-            },
-            _ if fd >= 0 => Ok(FanotifyDescriptor(fd)),
-            _ => unreachable!(),
-        }
+        libc_call(|| unsafe { fanotify_init(flags, event_flags) })
+            .map(FanotifyDescriptor)
+            .map_err(|errno| match errno {
+                EMFILE => ExceededFanotifyGroupPerProcessLimit,
+                ENFILE => ExceededOpenFileDescriptorPerProcessLimit,
+                ENOMEM => OutOfMemory,
+                EPERM => PermissionDenied,
+                ENOSYS => Unsupported,
+                // EINVAL => unreachable!(), // handled below
+                _ => panic!(format!(
+                    "unexpected error in fanotify_init({}, {}): {}",
+                    flags,
+                    event_flags,
+                    errno.desc()
+                )),
+            })
+    }
+}
+
+#[derive(Error, Debug)]
+pub enum MarkError {
+    #[error("TODO")]
+    TODO,
+}
+
+impl FanotifyDescriptor {
+    pub fn mark(&self, mark: Mark) -> Result<(), MarkError> {
+        use MarkError::*;
+        let raw = mark.to_raw();
+        libc_void_call(|| unsafe {
+            fanotify_mark(self.0, raw.flags, raw.mask, raw.dir_fd, raw.path_ptr())
+        }).map_err(|errno| match errno {
+            _ => TODO,
+        })
     }
 }

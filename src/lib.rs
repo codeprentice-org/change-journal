@@ -3,7 +3,6 @@ pub mod fanotify;
 #[cfg(test)]
 mod tests {
     use crate::fanotify::descriptor::{FanotifyInit, FanotifyError};
-    use std::error::Error;
 
     #[test]
     fn it_works() {
