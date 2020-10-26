@@ -14,9 +14,11 @@ repository = "https://github.com/codeprentice-org/change-journal"
 homepage = "https://github.com/codeprentice-org/change-journal/blob/main/README.md"
 readme = "README.md"
 categories = ["filesystem", "os::linux-apis", "os::windows-apis"]
-keywords = ["change journal", "fanotify", "USN", "watch", "filesystem"]
+keywords = ["journal", "fanotify", "USN", "watch", "filesystem"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 thiserror = "1.0.21"
+fanotify = "0.1.0"
+usn-journal = "0.1.0"
