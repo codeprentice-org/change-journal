@@ -36,6 +36,20 @@ It's a really great introduction to Rust.  I'm not sure of other good learning m
 but you can always ask me any questions.
 
 
+##### Editors/IDEs
+The IDE story for Rust is coming along nicely, 
+but don't expect anything as nice as IntelliJ for Java, for example.
+I use CLion with the IntelliJ Rust plugin, which is quite nice.
+This plugin also works the same with IntelliJ itself, too.
+You can get an educational license from JetBrains pretty easy, 
+so there shouldn't be any issues with the license.
+
+Another good option is VS Code with [rust-analyzer](https://rust-analyzer.github.io/manual.html#installation).
+Don't use the official Rust plugin, which is outdated and slow; make sure you're using rust-analyzer.
+rust-analyzer can also work with other editors like vim/emacs since it's just a language server,
+but I think it's best integrated with VS Code for now.
+
+
 #### Fanotify on Linux
 Most filesystem monitoring applications on Linux are built around 
 the [`inotify`](https://man7.org/linux/man-pages/man7/inotify.7.html) API.
