@@ -32,15 +32,19 @@ this library can enable is already fulfilled very well by Spotlight.
 
 
 ## Roadmap
-- [ ] Contribute to or fork 
-      the [file-descriptors](https://docs.rs/file-descriptors/0.9.1/file_descriptors/fanotify/struct.FanotifyFileDescriptor.html) crate 
-      to include support for the newer `fanotify` APIs/flags.
-      No real new code should be needed, just adding the new flags.
+- [ ] Implement the `fanotify` backend from scratch 
+      in the [fanotify](https://github.com/codeprentice-org/fanotify) crate
+      using [libc](https://github.com/rust-lang/libc) bindings.
 
-- [ ] Implement the `fanotify` backend using 
-      the [file-descriptors](https://docs.rs/file-descriptors/0.9.1/file_descriptors/fanotify/struct.FanotifyFileDescriptor.html) crate.
-
-- [ ] Implement the USN Journal backend.
+- [ ] Implement the USN Journal backend from scratch 
+      in the [usn-journal](https://github.com/codeprentice-org/usn-journal) crate
+      using [windows](https://github.com/microsoft/windows-rs) bindings.
 
 - [ ] Integrate with a file searcher program like [lolcate](https://github.com/ngirard/lolcate-rs)
       to provide real-time filesystem monitoring so that no slow, manual indexing has to be performed.
+
+
+## Progress
+
+### Fall 2020
+

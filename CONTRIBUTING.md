@@ -1,12 +1,10 @@
 # Contributing to Change Journal
 
 
-### Getting Started
+## Getting Started
 This is mainly geared to [Codeprentice](https://github.com/codeprentice-org) members.
 I added everyone who expressed interest in this project as repo collaborators:
 * Khyber Sen (me)
-* Saquib Shazad
-* Asif Mallik
 * Rickson Yang
 
 This project is written in Rust, so if you're not familiar with Rust at all, 
@@ -18,7 +16,7 @@ especially with regards to `FAN_MARK_FILESYSTEM` and `FAN_MARK_MOUNT`.
 
 Ideally, once we get the `fanotify` backend working for Linux, 
 we'll also work on the USN Journal backend for Windows.
-This'll probably be more complicated than the `fanotify` backend, 
+This will probably be more complicated than the `fanotify` backend, 
 since I haven't developed with Rust for Windows before, especially Windows APIs,
 and there doesn't appear to be a good wrapper library for the USN Journal API
 as there is for `fanotify`.
